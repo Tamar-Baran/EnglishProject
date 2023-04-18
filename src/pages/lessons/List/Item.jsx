@@ -24,7 +24,7 @@ const lightTheme = createTheme({ palette: { mode: 'light' } });
 export default function Elevation({grade,name}) {
  console.log(grade)
  console.log(name)
-
+ const gradeText = typeof grade === 'object' ? JSON.stringify(grade) : grade;
   return (
    
     <Grid container spacing={0}>
@@ -59,7 +59,7 @@ export default function Elevation({grade,name}) {
               textAlign:'center'
             }}
           >
-          <div>{name}{grade}</div>
+          <div>{name}    {gradeText}</div>
                
            </Typography>
 </Item>

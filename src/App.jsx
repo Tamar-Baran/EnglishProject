@@ -11,7 +11,7 @@ function App() {
     <div>
       <Router>
 
-        <ResponsiveAppBar/>      <List type="grammer"/>
+        <ResponsiveAppBar/>      
 
         <Routes>      
            <Route path='/vocabulary' element={<List type="vocabulary"/>} />

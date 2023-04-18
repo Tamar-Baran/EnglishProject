@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { Link, useNavigate } from "react-router-dom";
+
 import {Stack,MenuList,MenuItem,Popper,Paper,Grow,ClickAwayListener,Button}from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 export default function MenuListComposition() {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -13,7 +16,7 @@ export default function MenuListComposition() {
   const handleClose = (event,subject) => {
    
     console.log(subject)
-    //navigate(`/register`);
+    navigate(`/${subject}`);
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
