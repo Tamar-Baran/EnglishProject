@@ -49,7 +49,7 @@ const List = ({type}) => {
 
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid  >
         {lessonsList?.length && (
           lessonsList.map((lesson, index) => {
             return (

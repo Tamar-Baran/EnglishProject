@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -12,8 +11,10 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: 'theme.palette.text.secondary',
   backgroundColor:'#F9AAAA',
-  height: 260,
-  width: 180,
+  height: '100%',
+  width: '100%',
+  maxWidth: '180px',
+  maxHeight: '260px',
   lineHeight: '80px',
 
 }));
@@ -22,49 +23,57 @@ const Item = styled(Paper)(({ theme }) => ({
 const lightTheme = createTheme({ palette: { mode: 'light' } });
 
 export default function Elevation({grade,name}) {
- console.log(grade)
- console.log(name)
- const gradeText = typeof grade === 'object' ? JSON.stringify(grade) : grade;
+  const gradeText = typeof grade === 'object' ? JSON.stringify(grade) : grade;
   return (
-   
     <Grid container spacing={0}>
       {[lightTheme].map((theme, index) => (
-        <Grid item xs={6} key={index}>
+        <Grid item xs={12} md={6} key={index}>
           <ThemeProvider theme={theme}>
             <Box
               sx={{
                 p: 2,
                 bgcolor: 'background.default',
                 display: 'grid',
-                display: { xs: 'none', md: 'flex' },
+                sx: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  [theme.breakpoints.up('md')]: {
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                  },
+                },
                 gridTemplateColumns: { md: '1fr 1fr' },
                 gap: 2,
               }}
             >
-              
-                <Item  elevation={12} ><TaskAltIcon/>     
-            <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-              textAlign:'center'
-            }}
-          >
-          <div>{name}    {gradeText}</div>
-               
-           </Typography>
-</Item>
-
-            
+              <Item  elevation={12} sx={{
+                height: '100%',
+                width: '100%',
+                maxWidth: '180px',
+                maxHeight: '260px',
+              }}>
+                <TaskAltIcon/>     
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="/"
+                  sx={{
+                    mr: 2,
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                    textAlign:'center'
+                  }}
+                >
+                  <div>{name}    {gradeText}</div>
+                </Typography>
+              </Item>
             </Box>
           </ThemeProvider>
         </Grid>

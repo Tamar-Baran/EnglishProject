@@ -59,7 +59,7 @@ export default function MenuListComposition() {
 
         >
         
-          <Button  style={{ color: 'white',margin:16 }} onMouseOver={handleToggle}><Typography textAlign="center" >lessons</Typography></Button>
+          <Button  style={{ color: 'white',margin:16 }} ><Typography textAlign="center" >lessons</Typography></Button>
      </Button>
         <Popper
           open={open}

@@ -47,9 +47,9 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{ background: '#ABABAB' }} >
-      <Container maxWidth="xl" >
-        <Toolbar disableGutters>
+    <AppBar position="static" style={{ background: '#ABABAB', height:70}} >
+      <Container  style={{marginTop:-20 }}  >
+        <Toolbar >
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
@@ -57,7 +57,6 @@ function ResponsiveAppBar() {
             component="a"
             href="/"
             sx={{
-              mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
@@ -115,7 +114,6 @@ function ResponsiveAppBar() {
             component="a"
             href=""
             sx={{
-              mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
@@ -132,12 +130,12 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={(e)=>handleCloseNavMenu(page)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{  color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
             ))}              
-             <MenuListComposition  sx={{ my: 2, color: 'white', display: 'block' }}></MenuListComposition>
+             <MenuListComposition  sx={{  color: 'white', display: 'block' }}></MenuListComposition>
 
           </Box>
 

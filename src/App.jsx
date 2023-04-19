@@ -5,14 +5,15 @@ import Home from './pages/home/index';
 import ResponsiveAppBar from './pages/appBar/index';
 import Elevation from "./pages/lessons/List/Item";
 import List from './pages/lessons/List/index'
+import FloatingActionButtonZoom from "./pages/lessons/Single/index";
 function App() {
   
   return (
-    <div>
+    <div   >
       <Router>
 
         <ResponsiveAppBar/>      
-
+        
         <Routes>      
            <Route path='/vocabulary' element={<List type="vocabulary"/>} />
            <Route path='/grammer' element={<List type="grammer"/>} />
@@ -25,7 +26,19 @@ function App() {
           <Route path='/register' element={<Register />} />
 
         </Routes>
+        {<div  style={{ 
+        marginTop:'75px',
+        marginLeft:'300px',
+        marginRight:'300px',
+        // marginBottom:'100px',
+        alignContent:'center',display:'flex',
+        backgroundColor:"#27511132",
+    justifyContent:'center'}}><FloatingActionButtonZoom /></div>} 
       </Router>
+     {
+   
+}
+      
 
     </div>
   );
