@@ -71,7 +71,7 @@ export default function Elevation({grade,name}) {
                     textAlign:'center'
                   }}
                 >
-                  <div>{name}    {gradeText}</div>
+                  <div>jjjj</div>
                 </Typography>
               </Item>
             </Box>

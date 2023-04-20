@@ -6,6 +6,7 @@ import ResponsiveAppBar from './pages/appBar/index';
 import Elevation from "./pages/lessons/List/Item";
 import List from './pages/lessons/List/index'
 import FloatingActionButtonZoom from "./pages/lessons/Single/index";
+import StandardImageList from './pages/lessons/Single/contentLesson/wordsList'
 function App() {
   
   return (
@@ -28,17 +29,15 @@ function App() {
         </Routes>
         {<div  style={{ 
         marginTop:'75px',
-        marginLeft:'300px',
-        marginRight:'300px',
+        marginLeft:'10%',
+        marginRight:'10%',
         // marginBottom:'100px',
         alignContent:'center',display:'flex',
         backgroundColor:"#27511132",
     justifyContent:'center'}}><FloatingActionButtonZoom /></div>} 
+    
       </Router>
-     {
-   
-}
-      
+  
 
     </div>
   );
