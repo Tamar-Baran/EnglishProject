@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useParams } from 'react-router-dom';
 import Elevation from '../List/Item';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
@@ -14,7 +15,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { green } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import PinnedSubheaderList from './contentLesson/wordsList.jsx'
+import WordsList from './contentLesson/wordsList.jsx'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,6 +62,10 @@ const fabGreenStyle = {
 };
 
 export default function FloatingActionButtonZoom() {
+
+  let { lessonId } = useParams();
+  console.log(lessonId,"lessonId");
+  
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -118,7 +123,7 @@ export default function FloatingActionButtonZoom() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab style={{height:75}} label="Words" {...a11yProps(0)} />
+          <Tab style={{height:75}} label="Words List" {...a11yProps(0)} />
           <Tab style={{height:75}} label="Cards" {...a11yProps(1)} />
           <Tab style={{height:75}} label="Test" {...a11yProps(2)} />
         </Tabs>
@@ -129,7 +134,7 @@ export default function FloatingActionButtonZoom() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <PinnedSubheaderList></PinnedSubheaderList>
+          <WordsList lessonId="4"></WordsList>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           Item Two    

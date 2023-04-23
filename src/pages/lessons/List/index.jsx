@@ -5,21 +5,21 @@ import { Link } from "react-router-dom"
 import Elevation from './Item'
 import { Grid } from "@mui/material";
 
-const List = ({type}) => {
+const List = ({ type }) => {
   const [lessonsList, setLessonsList] = useState([]);
   const [gradesList, setGradesList] = useState([]);
-  
-  const params = useParams() 
-  
+
+  const params = useParams()
+
   useEffect(() => {
     async function fetchData() {
-       const config = {
-            headers: {
-              'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
-            }
+      const config = {
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
         }
-        const { data } = await axios.get(`http://localhost:3600/api/lesson/displayItem/${type}`, config)
-        setLessonsList(data)
+      }
+      const { data } = await axios.get(`http://localhost:3600/api/lesson/displayItem/${type}`, config)
+      setLessonsList(data)
     }
 
     fetchData();
@@ -54,7 +54,7 @@ const List = ({type}) => {
           lessonsList.map((lesson, index) => {
             return (
               <Grid item sx={2} md={4} key={lesson.lessonId}>
-                <Elevation grade={gradesList[index]?gradesList[index].grade:0} name={lesson.name} />
+                <Elevation grade={gradesList[index] ? gradesList[index].grade : 0} name={lesson.name} lessonId={lesson.lessonId} />
               </Grid>
             )
           })

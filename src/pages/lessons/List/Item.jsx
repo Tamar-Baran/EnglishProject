@@ -10,7 +10,7 @@ const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   textAlign: 'center',
   color: 'theme.palette.text.secondary',
-  backgroundColor:'#F9AAAA',
+  backgroundColor: '#F9AAAA',
   height: '100%',
   width: '100%',
   maxWidth: '180px',
@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const lightTheme = createTheme({ palette: { mode: 'light' } });
 
-export default function Elevation({grade,name}) {
+export default function Elevation({ grade, name, lessonId }) {
   const gradeText = typeof grade === 'object' ? JSON.stringify(grade) : grade;
   return (
     <Grid container spacing={0}>
@@ -49,18 +49,18 @@ export default function Elevation({grade,name}) {
                 gap: 2,
               }}
             >
-              <Item  elevation={12} sx={{
+              <Item elevation={12} sx={{
                 height: '100%',
                 width: '100%',
                 maxWidth: '180px',
                 maxHeight: '260px',
               }}>
-                <TaskAltIcon/>     
+                <TaskAltIcon />
                 <Typography
                   variant="h6"
                   noWrap
                   component="a"
-                  href="/"
+                  href={`lesson/${lessonId}`}
                   sx={{
                     mr: 2,
                     fontFamily: 'monospace',
@@ -68,10 +68,10 @@ export default function Elevation({grade,name}) {
                     letterSpacing: '.3rem',
                     color: 'inherit',
                     textDecoration: 'none',
-                    textAlign:'center'
+                    textAlign: 'center'
                   }}
                 >
-                  <div>jjjj</div>
+                  <div>{name}-{grade}</div>
                 </Typography>
               </Item>
             </Box>
@@ -79,6 +79,6 @@ export default function Elevation({grade,name}) {
         </Grid>
       ))}
     </Grid>
-    
+   
   );
 }
