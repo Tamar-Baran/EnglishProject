@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'pink',
+  backgroundColor: '#afe6d1',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -64,7 +64,7 @@ export default function WordsList({ lessonId }) {
 
       <li >
         <ul>
-          <Box sx={{ width: '85%', color: 'pink', margin: '5%' }}>
+          <Box sx={{ width: '85%', color: '#fcedee', margin: '5%' }}>
             <Stack spacing={2}>
               {
                 { wordsEng } && wordsEng.map((word, index) => {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import Elevation from '../List/Item';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -16,6 +15,11 @@ import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { green } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import WordsList from './contentLesson/wordsList.jsx'
+import Cards from './contentLesson/Cards/card';
+import { CenterFocusStrong } from '@mui/icons-material';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useEffect, useState } from "react";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,13 +65,19 @@ const fabGreenStyle = {
   },
 };
 
-export default function FloatingActionButtonZoom() {
-
+export default function Vocabulary() {
+ 
   let { lessonId } = useParams();
-  console.log(lessonId,"lessonId");
-  
+  console.log(lessonId, "lessonId");
+
   const theme = useTheme();
+  const [index, setIndex] = useState(0);
   const [value, setValue] = React.useState(0);
+
+  const nextCard=()=>{
+    
+    setIndex(index+1);
+    }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -110,11 +120,11 @@ export default function FloatingActionButtonZoom() {
         width: 900,
         position: 'relative',
         minHeight: 600,
-       
-        margin:10,
+        justifyContent: 'center',
+        margin: 10,
       }}
     >
-      <AppBar position="static" color="default" style={{height:75}}>
+      <AppBar position="static" color="default" style={{ height: 75 }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -123,9 +133,9 @@ export default function FloatingActionButtonZoom() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab style={{height:75}} label="Words List" {...a11yProps(0)} />
-          <Tab style={{height:75}} label="Cards" {...a11yProps(1)} />
-          <Tab style={{height:75}} label="Test" {...a11yProps(2)} />
+          <Tab style={{ height: 75 }} label="Words List" {...a11yProps(0)} />
+          <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} />
+          <Tab style={{ height: 75 }} label="Test" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -134,13 +144,17 @@ export default function FloatingActionButtonZoom() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <WordsList lessonId="4"></WordsList>
+          <WordsList lessonId={lessonId}></WordsList>
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two    
-      </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction} sx={{ justifyContent: 'center' }}>
+      
+          <div style={{display:'flex',flexDirection:'row',height:300,justifyContent:'center'}}><Cards lessonId={lessonId} index={index}></Cards></div>
+          <Stack direction="row" spacing={2}>
+            <Button onClick={()=>nextCard()} variant="contained" >Next</Button>
+          </Stack>
+        </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
+
         </TabPanel>
       </SwipeableViews>
       {fabs.map((fab, index) => (

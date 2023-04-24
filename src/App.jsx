@@ -4,15 +4,21 @@ import Login from './pages/login/Login';
 import Home from './pages/home/index';
 import ResponsiveAppBar from './pages/appBar/index';
 import Elevation from "./pages/lessons/List/Item";
-import List from './pages/lessons/List/index'
-import FloatingActionButtonZoom from "./pages/lessons/Single/index";
-import StandardImageList from './pages/lessons/Single/contentLesson/wordsList'
+import List from './pages/lessons/List/index';
+import StandardImageList from './pages/lessons/Single/contentLesson/wordsList';
+import CoverVocabulary from './pages/lessons/CoverLesson/coverVocabulary';
+import CoverGrammer from './pages/lessons/CoverLesson/coverGrammer';
+import CoverSpelling from './pages/lessons/CoverLesson/coverSpelling';
+import CoverReading from './pages/lessons/CoverLesson/coverReading';
+import CoverPronounce from './pages/lessons/CoverLesson/coverPronounce';
+import {AuthContextProvider} from './context/AuthContext';
+import Cards from "./pages/lessons/Single/contentLesson/Cards/card";
 function App() {
 
   return (
     <div   >
       <Router>
-
+    <AuthContextProvider>
         <ResponsiveAppBar />
 
         <Routes>
@@ -25,20 +31,16 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/lesson/:lessonId' element={<div style={{
-            marginTop: '75px',
-            marginLeft: '10%',
-            marginRight: '10%',
-            // marginBottom:'100px',
-            alignContent: 'center', display: 'flex',
-            backgroundColor: "#27511132",
-            justifyContent: 'center'
-          }}><FloatingActionButtonZoom /></div>} />
+          <Route path='/vocabulary/lesson/:lessonId' element={<CoverVocabulary />} />
+          <Route path='/grammer/lesson/:lessonId' element={<CoverGrammer></CoverGrammer>} />
+          <Route path='/spelling/lesson/:lessonId' element={<CoverSpelling></CoverSpelling>} />
+          <Route path='/reading/lesson/:lessonId' element={<CoverReading></CoverReading>} />
+          <Route path='/pronounce/lesson/:lessonId' element={<CoverPronounce></CoverPronounce>} />
 
 
         </Routes>
-
-
+        </AuthContextProvider>
+        
       </Router>
 
 
