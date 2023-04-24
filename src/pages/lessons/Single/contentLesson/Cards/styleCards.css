@@ -1,7 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Lily+Script+One';
 
-
-.card {
+/* .card {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,6 +9,15 @@
   perspective: 500px;
   flex-direction: row;
   align-self:flex-start;
+} */
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  perspective: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
@@ -20,6 +28,7 @@
 
    transition: transform 1s;
   transform-style: preserve-3d;
+  font-family: 'Lily Script One',cursive;
 }
 
 .card:hover .content {

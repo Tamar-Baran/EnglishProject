@@ -46,7 +46,7 @@ export default function Cards({ lessonId, index }) {
 
     <> {index > (wordsEng.length-1) ?
       <h1>you finished!</h1> :
-      (<div className='card' style={{ justifyContent: 'center', justifyItems: 'center', marginLeft: "300px", display: 'flex' }}>
+      (<div className='card' >
         <div className='content'>
           <div className='front'>
             {wordsHeb[index]}
@@ -56,7 +56,7 @@ export default function Cards({ lessonId, index }) {
           </div>
         </div>
       </div>)}
-      <spam></spam>
+    
 
     </>
 
