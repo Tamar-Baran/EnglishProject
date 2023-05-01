@@ -12,7 +12,9 @@ import CoverSpelling from './pages/lessons/CoverLesson/coverSpelling';
 import CoverReading from './pages/lessons/CoverLesson/coverReading';
 import CoverPronounce from './pages/lessons/CoverLesson/coverPronounce';
 import {AuthContextProvider} from './context/AuthContext';
-import Cards from "./pages/lessons/Single/contentLesson/Cards/card";
+import SavedWordList from './pages/personalArea/WordList';
+import MyTests from './pages/personalArea/Test'
+import PersonalArea from "./pages/personalArea/index";
 function App() {
 
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route path='/spelling' element={<List type="spelling" />} />
           <Route path='/reading' element={<List type="reading" />} />
           <Route path='/pronounce' element={<List type="pronounce" />} />
+          <Route path='/personal-area' element={<List type="personal-area" />} />
 
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
@@ -38,7 +41,8 @@ function App() {
           <Route path='/pronounce/lesson/:lessonId' element={<CoverPronounce></CoverPronounce>} />
 
 
-        </Routes>
+        </Routes>        
+       <PersonalArea></PersonalArea>
         </AuthContextProvider>
       </Router>
 

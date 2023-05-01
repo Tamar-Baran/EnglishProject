@@ -20,9 +20,16 @@ import { CenterFocusStrong } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from "react";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ActionAreaCard from './contentLesson/Test/test'
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  const [disable, setDisable] = useState(false);
 
   return (
     <Typography
@@ -77,7 +84,11 @@ export default function Vocabulary() {
   const nextCard=()=>{
     
     setIndex(index+1);
-    }
+  }
+  const lastCard=()=>{
+    
+      setIndex(index-1);
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -150,11 +161,13 @@ export default function Vocabulary() {
       
           <div style={{display:'flex',flexDirection:'row',height:300,justifyContent:'center'}}><Cards lessonId={lessonId} index={index}></Cards></div>
           <Stack direction="row" spacing={2}>
-            <Button onClick={()=>nextCard()} variant="contained" >Next</Button>
+            {/* <Button onClick={()=>nextCard()} variant="contained">Next</Button> */}
+          <div style={{position:"absolute",transform:"translateX(2000%)"}}> <ArrowForwardIosIcon  onClick={()=>nextCard()} variant="contained" ></ArrowForwardIosIcon></div>
+           <div style={{position:"absolute",transform:"translateX(20%)", transform:"translateY(-20%)"}}> <ArrowBackIosNewIcon  onClick={()=>lastCard()} variant="contained" ></ArrowBackIosNewIcon></div>        
           </Stack>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
-
+          {/* <ActionAreaCard></ActionAreaCard> */}
         </TabPanel>
       </SwipeableViews>
       {fabs.map((fab, index) => (

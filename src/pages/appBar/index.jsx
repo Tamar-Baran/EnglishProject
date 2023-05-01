@@ -15,7 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuListComposition from './MenuListComposition';
 
-const pages = ['Home', 'help'];
+const pages = ['Home', 'help','personal-area'];
 const settings = ['Login','Profile', 'Account','Level' ];
 
 function ResponsiveAppBar() {

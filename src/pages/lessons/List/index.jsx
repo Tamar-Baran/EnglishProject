@@ -12,6 +12,7 @@ const List = ({ type }) => {
   const [lessonsList, setLessonsList] = useState([]);
   const [gradesList, setGradesList] = useState([]);
   const { logedIn } = useContext(AuthContext);
+  const [counter, setCounter] = useState(false);
 
 
   useEffect(() => {
@@ -66,7 +67,7 @@ const List = ({ type }) => {
           {lessonsList?.length && (
             lessonsList.map((lesson, index) => {
               return (
-                <Elevation grade={gradesList[index] ? gradesList[index].grade : 0} name={lesson.name} lessonId={lesson.lessonId} type={type} />
+                <Elevation i={index} grade={gradesList[index] ? gradesList[index].grade : "free trial"} name={lesson.name} lessonId={lesson.lessonId} type={type} />
               )
             })
           )}

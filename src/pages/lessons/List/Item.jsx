@@ -12,21 +12,39 @@ import { DialogTitle } from '@mui/material';
 import { DialogContent } from '@mui/material';
 import { DialogContentText } from '@mui/material';
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { DialogActions } from '@mui/material';
-
-export default function Elevation({ grade, name, lessonId, type }) {
+import { AuthContext } from "../../../context/AuthContext";
+import { useContext } from 'react';
+import LockPersonIcon from '@mui/icons-material/LockPerson';
+export default function Elevation({ i, grade, name, lessonId, type }) {
   const [open, setOpen] = React.useState(false)
+  const [disable, setDisable] = useState(false);
+  const { logedIn } = useContext(AuthContext);
+  const [counter, setCounter] = useState(false);
   const handleClickOpen = ()=>{
     setOpen(true)
   }
   const handleClose = ()=>{
     setOpen(false)
   }
+  const onClickLearnMore=()=>{
+     navigate( `lesson/${lessonId}`)
+  }
   const navigate = useNavigate()
+
+  useEffect(() => {
+   if(logedIn==false){
+
+    if(i!=0)
+    setDisable(true);
+
+   }
+  }, []);
   //   const gradeText = typeof grade === 'object' ? JSON.stringify(grade) : grade;
   return (
  <div style={{width:210,lineHeight:7}}>
-    <Card sx={{ maxWidth:223 ,backgroundColor:'#fcedee' }}>
+    <Card sx={{ maxWidth:223 ,backgroundColor:'gainsboro' }}>
      
       <CardContent>
    
@@ -34,7 +52,7 @@ export default function Elevation({ grade, name, lessonId, type }) {
           variant="h6"
           noWrap
           component="a"
-          href={`/${type}/lesson/${lessonId}`}
+          href={!disable?`/${type}/lesson/${lessonId}`:''}
           sx={{
             mr: 2,
             fontFamily: 'monospace',
@@ -45,12 +63,24 @@ export default function Elevation({ grade, name, lessonId, type }) {
             textAlign: 'center'
           }}
         >
-          <div>{name}-{grade}</div>
+          <div>{name}</div>
+        </Typography>
+        {!disable==true && logedIn&&
+        ` Your grade is: ${grade}`
+        }
+         {!disable==true && !logedIn&&
+       grade
+        }
+       {!disable==false && grade &&
+        <LockPersonIcon style={{}}></LockPersonIcon>
+        
+      }
+        <Typography variant="body2" color="text.secondary" >
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions style={{backgroundColor:'white'}}>
         
-      <Button onClick={handleClickOpen}>
+      <Button disabled={disable} onClick={handleClickOpen}>
 View Grades      </Button>
       <Dialog
         open={open}
@@ -61,12 +91,14 @@ View Grades      </Button>
         <DialogTitle id="alert-dialog-title">
           {"your grades"}
         </DialogTitle>
+      
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
            here it supposes to take to your profil,
            do you want to improve your test?
 
           </DialogContentText>
+          
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Improve </Button>
@@ -76,9 +108,9 @@ View Grades      </Button>
         </DialogActions>
       </Dialog>
 
+     
 
-
-        <Button size="small" onClick={()=>navigate( `lesson/${lessonId}`)}>Learn More</Button>
+        <Button size="small" disabled={disable} onClick={onClickLearnMore}>Learn More</Button>
       </CardActions>
     </Card>
     </div> 

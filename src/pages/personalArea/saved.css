@@ -1,0 +1,14 @@
+.buttom_line {
+    height: 40px;
+    border-radius: 0 0 3px 3px;
+    background-color: #F1F6FA;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    color: #000000;
+    font-family: Heebo;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    direction: rtl;
+}

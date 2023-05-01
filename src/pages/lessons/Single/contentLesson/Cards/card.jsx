@@ -15,6 +15,7 @@ import Button from '@mui/material/Button';
 
 
 
+
 export default function Cards({ lessonId, index }) {
   const [wordsHeb, setWordsHeb] = useState([]);
   const [wordsEng, setWordsEng] = useState([]);
@@ -45,7 +46,7 @@ export default function Cards({ lessonId, index }) {
   return (
 
     <> {index > (wordsEng.length-1) ?
-      <h1>you finished!</h1> :
+      <h1>now you're ready for the test!!</h1> :
       (<div className='card' >
         <div className='content'>
           <div className='front'>

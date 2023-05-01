@@ -10,6 +10,27 @@ import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Checkbox from '@mui/material/Checkbox';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
+function IconCheckboxes() {
+  return (
+    <div>
+      <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+      <Checkbox
+        {...label}
+        icon={<BookmarkBorderIcon />}
+        checkedIcon={<BookmarkIcon />}
+      />
+    </div>
+  );
+}
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#afe6d1',
@@ -19,7 +40,11 @@ const Item = styled(Paper)(({ theme }) => ({
   position: 'center',
   color: 'theme.palette.text.secondary',
   height: 60,
-}));
+
+})
+);
+
+
 
 export default function WordsList({ lessonId }) {
   const [wordsHeb, setWordsHeb] = useState([]);
@@ -47,6 +72,19 @@ export default function WordsList({ lessonId }) {
     }
     fetchData();
   }, []);
+
+  const addWord = async (wordEnglish, wordHebrew) => {
+       
+      const config = {
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
+        }
+      } 
+      const res = await axios.post("http://localhost:3600/api/user/wordsList",  {wordEnglish, wordHebrew},config);
+      console.log(res)
+     
+  }
+
   return (
     <List
       sx={{
@@ -68,7 +106,13 @@ export default function WordsList({ lessonId }) {
             <Stack spacing={2}>
               {
                 { wordsEng } && wordsEng.map((word, index) => {
-                  return <Item>{wordsEng[index]} - {wordsHeb[index]}</Item>
+                  return <Item>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <Checkbox onClick={()=>addWord(wordsEng[index], wordsHeb[index])} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                      <div>{wordsEng[index]} - {wordsHeb[index]}</div>
+                    </div>
+
+                  </Item>
                 })
               }
               {/* <Item>Item 3</Item>
