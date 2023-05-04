@@ -1,7 +1,8 @@
+@import 'https://fonts.googleapis.com/css?family=Lily+Script+One';
 .buttom_line {
     height: 40px;
     border-radius: 0 0 3px 3px;
-    background-color: #F1F6FA;
+    background-color:#bedffa;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -11,4 +12,7 @@
     line-height: 40px;
     text-align: center;
     direction: rtl;
+}
+.title{
+    font-family: 'Lily Script One',cursive;
 }

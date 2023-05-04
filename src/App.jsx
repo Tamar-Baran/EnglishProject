@@ -15,6 +15,7 @@ import {AuthContextProvider} from './context/AuthContext';
 import SavedWordList from './pages/personalArea/WordList';
 import MyTests from './pages/personalArea/Test'
 import PersonalArea from "./pages/personalArea/index";
+
 function App() {
 
   return (
@@ -29,7 +30,7 @@ function App() {
           <Route path='/spelling' element={<List type="spelling" />} />
           <Route path='/reading' element={<List type="reading" />} />
           <Route path='/pronounce' element={<List type="pronounce" />} />
-          <Route path='/personal-area' element={<List type="personal-area" />} />
+         
 
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
@@ -39,10 +40,10 @@ function App() {
           <Route path='/spelling/lesson/:lessonId' element={<CoverSpelling></CoverSpelling>} />
           <Route path='/reading/lesson/:lessonId' element={<CoverReading></CoverReading>} />
           <Route path='/pronounce/lesson/:lessonId' element={<CoverPronounce></CoverPronounce>} />
-
+          <Route path='/personal-area' element={<PersonalArea></PersonalArea>} />
 
         </Routes>        
-       <PersonalArea></PersonalArea>
+       
         </AuthContextProvider>
       </Router>
 

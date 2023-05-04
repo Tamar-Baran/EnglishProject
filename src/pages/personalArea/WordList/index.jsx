@@ -8,19 +8,21 @@ import img from '../../../images/CLIPB001.gif'
 import "../saved.css";
 export default function SavedWordList() {
   return (
-    <Card sx={{ maxWidth: 200,minHeight:200, maxHeight:300 }}>
+    <Card sx={{ maxWidth: 300,minWidth:200,minHeight:200, maxHeight:300, backgroundColor:'#bbdefb' }}>
       <CardActionArea>
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="200"
           image={img}
           alt="word List"
-        />
-        <CardContent>
-        
+        /> */}
+        <CardContent  sx={{ minHeight:200,justifyContent:'center',display:'flex',alignItems:'center'}}>
+              <Typography gutterBottom variant="h5" component="div">
+                My Words List
+              </Typography>
           
-        </CardContent> 
-        <div className="buttom_line" >
+            </CardContent>
+        <div className="buttom_line" style={{backgroundColor:'#039be5'}} >
                     0/60 מילים
         </div>
       </CardActionArea>

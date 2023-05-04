@@ -8,7 +8,7 @@ import "../saved.css";
 export default function MyTests() {
 
     return (
-        <Card sx={{ maxWidth: 200 }}>
+        <Card sx={{ maxWidth: 300,minWidth:200, backgroundColor:'#b9f6ca' }}>
           <CardActionArea>
       
             <CardContent  sx={{ minHeight:200,justifyContent:'center',display:'flex',alignItems:'center'}}>
@@ -17,7 +17,7 @@ export default function MyTests() {
               </Typography>
           
             </CardContent>  
-            <div className="buttom_line" >
+            <div className="buttom_line" style={{backgroundColor:'#00bfa5'}} >
                  7
         </div>
           </CardActionArea>  

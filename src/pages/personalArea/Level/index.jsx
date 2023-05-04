@@ -5,20 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import "../saved.css";
-export default function MyTests() {
+export default function MyLevel() {
 
     return (
-        <Card sx={{maxWidth: 300,minWidth:200, backgroundColor:'#ffecb3'}}>
+        <Card sx={{ maxWidth: 300,minWidth:200, backgroundColor:'#ffccbc' }}>
           <CardActionArea>
       
             <CardContent  sx={{ minHeight:200,justifyContent:'center',display:'flex',alignItems:'center'}}>
               <Typography gutterBottom variant="h5" component="div">
-                My Grades
+                My Level
               </Typography>
           
             </CardContent>  
-            <div className="buttom_line" style={{backgroundColor:'#fbc02d'}}
->
+            <div className="buttom_line"style={{backgroundColor:'#f4511e'}} >
                  7
         </div>
           </CardActionArea>  
