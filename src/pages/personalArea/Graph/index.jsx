@@ -76,6 +76,7 @@ localGrade.push(index.grade)
 console.log(localDate, "localDate")
 console.log(localGrade, "localGrade")
 
+averageGrade[0]=localGrade[0]
 tmp[0]=localGrade[0]
 var i;
 let count=2;
@@ -89,7 +90,8 @@ for(i=1;i<localGrade.length; i++)
   count=count+1;
 
 }
-setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[index]}})) 
+setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[index]}}))
+
 })
 
     }
@@ -108,14 +110,14 @@ setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[
         bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
+      <CartesianGrid strokeDasharray="2 2" />
       <XAxis style={{fontSize:'10'}} dataKey="name" />
       <YAxis />
       <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {console.log(newData)}
         {newData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 20]} />
-        ))}
+          <Cell key={`cell-${(index)}`} fill={colors[(index)]} />
+        )) }
       </Bar>
     </BarChart>
   );

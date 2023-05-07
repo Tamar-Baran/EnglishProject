@@ -94,7 +94,10 @@ export default function WordsList({ lessonId }) {
       }
     } 
     console.log(config)
-    const res = await axios.delete("http://localhost:3600/api/user/wordsList",  {wordEnglish, wordHebrew},config);
+    const res = await axios.delete("http://localhost:3600/api/user/wordsList", {
+      data: { wordEnglish, wordHebrew },
+      ...config
+    });
     console.log(res)
    
 }
