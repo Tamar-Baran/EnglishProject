@@ -22,6 +22,7 @@ return(
         marginRight: '10%',
         alignContent: 'center', display: 'flex',
         gap: 70,
+        flexWrap:'wrap',
         justifyContent: 'center'
       }}> <SavedWordList ></SavedWordList>
       <MyTests></MyTests>

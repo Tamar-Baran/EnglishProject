@@ -73,7 +73,7 @@ export default function WordsList({ lessonId }) {
     }
     fetchData();
   }, []);
-
+ 
   const addWord = async (wordEnglish, wordHebrew) => {
        
       const config = {
@@ -81,10 +81,23 @@ export default function WordsList({ lessonId }) {
           'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
         }
       } 
+      console.log(config)
       const res = await axios.post("http://localhost:3600/api/user/wordsList",  {wordEnglish, wordHebrew},config);
       console.log(res)
      
   }
+  const deleteWord = async (wordEnglish, wordHebrew) => {
+       
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
+      }
+    } 
+    console.log(config)
+    const res = await axios.delete("http://localhost:3600/api/user/wordsList",  {wordEnglish, wordHebrew},config);
+    console.log(res)
+   
+}
 
   return (
     <List
@@ -109,29 +122,19 @@ export default function WordsList({ lessonId }) {
                 { wordsEng } && wordsEng.map((word, index) => {
                   return <Item>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <Checkbox onClick={()=>addWord(wordsEng[index], wordsHeb[index])} {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+                      <Checkbox onChange={(e) => {
+                        if (e.target.checked == true)
+                        addWord(wordsEng[index], wordsHeb[index]);
+                        else
+                        deleteWord(wordsEng[index], wordsHeb[index])
+                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                       <div>{wordsEng[index]} - {wordsHeb[index]}</div>
                     </div>
 
                   </Item>
                 })
               }
-              {/* <Item>Item 3</Item>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item> */}
+             
             </Stack>
           </Box>
         </ul>

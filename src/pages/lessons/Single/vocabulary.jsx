@@ -161,7 +161,7 @@ export default function Vocabulary() {
       
           <div style={{display:'flex',flexDirection:'row',height:300,justifyContent:'center'}}><Cards lessonId={lessonId} index={index}></Cards></div>
           <Stack direction="row" spacing={2}>
-            {/* <Button onClick={()=>nextCard()} variant="contained">Next</Button> */}
+  
           <div style={{position:"absolute",transform:"translateX(2000%)"}}> <ArrowForwardIosIcon  onClick={()=>nextCard()} variant="contained" ></ArrowForwardIosIcon></div>
            <div style={{position:"absolute",transform:"translateX(20%)", transform:"translateY(-20%)"}}> <ArrowBackIosNewIcon  onClick={()=>lastCard()} variant="contained" ></ArrowBackIosNewIcon></div>        
           </Stack>
