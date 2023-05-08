@@ -59,17 +59,36 @@ export default function WordsList({ lessonId }) {
         }
       }
       const { data } = await axios.get(`http://localhost:3600/api/lesson/lessonContent/${lessonId}`, config)
+      const res = await axios.get("http://localhost:3600/api/user/wordsList",config);
+      console.log(res)
+
       var values = [];
       var keys = [];
+      var str=JSON.stringify(res.data);
       Object.values(data).forEach(function (d) {
 
-        Object.values(d).forEach((val) => { values.push(val) })
-        Object.keys(d).forEach((val) => { keys.push(val) })
+        Object.values(d).forEach((val) => { 
+          if (str.includes(val))
+          values.push([val,'true'])
+          else
+          values.push([val,'false'])})
+        Object.keys(d).forEach((val) => { 
+          if (str.includes(val))  
+          keys.push([val,'true']) 
+          else
+          keys.push([val,'false']) 
+
+        })
       })
+
+     console.log(keys)
+     console.log(values)
+
       setWordsHeb(values)
       setWordsEng(keys)
       console.log(wordsHeb, "wordsHeb")
       console.log(wordsEng, "wordsEng")
+
     }
     fetchData();
   }, []);
@@ -125,13 +144,14 @@ export default function WordsList({ lessonId }) {
                 { wordsEng } && wordsEng.map((word, index) => {
                   return <Item>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <Checkbox onChange={(e) => {
+                      <Checkbox  onChange={(e) => {
                         if (e.target.checked == true)
-                        addWord(wordsEng[index], wordsHeb[index]);
+                        addWord(wordsEng[index][0], wordsHeb[index][0]);
                         else
-                        deleteWord(wordsEng[index], wordsHeb[index])
-                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
-                      <div>{wordsEng[index]} - {wordsHeb[index]}</div>
+                        deleteWord(wordsEng[index][0], wordsHeb[index][0])
+                    
+                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />}  checked={`${wordsEng[index][1]}`}/>
+                      <div>{wordsEng[index][0]} - {wordsHeb[index][0]}</div>
                     </div>
 
                   </Item>
