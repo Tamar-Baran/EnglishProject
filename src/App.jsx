@@ -5,7 +5,6 @@ import Home from './pages/home/index';
 import ResponsiveAppBar from './pages/appBar/index';
 import Elevation from "./pages/lessons/List/Item";
 import List from './pages/lessons/List/index';
-import StandardImageList from './pages/lessons/Single/contentLesson/wordsList';
 import CoverVocabulary from './pages/lessons/CoverLesson/coverVocabulary';
 import CoverGrammer from './pages/lessons/CoverLesson/coverGrammer';
 import CoverSpelling from './pages/lessons/CoverLesson/coverSpelling';
@@ -15,9 +14,10 @@ import {AuthContextProvider} from './context/AuthContext';
 import SavedWordList from './pages/personalArea/WordList';
 import MyTests from './pages/personalArea/Test'
 import PersonalArea from "./pages/personalArea/index";
-
+import AboutUs from './pages/aboutUs/index'
 function App() {
-
+  // https://themewagon.com/themes/free-responsive-educational-website-template-kidkinder/
+  // file:///C:/Users/214387938/AppData/Local/Temp/Temp1_kidkinder-1.0.0.zip/kidkinder-1.0.0/about.html
   return (
     <div   >
       <Router>
@@ -31,6 +31,7 @@ function App() {
           <Route path='/reading' element={<List type="reading" />} />
           <Route path='/pronounce' element={<List type="pronounce" />} />
          
+          <Route path='/AboutUs' element={<AboutUs></AboutUs>} />
 
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />

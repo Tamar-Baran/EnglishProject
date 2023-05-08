@@ -14,23 +14,19 @@ import EditIcon from '@mui/icons-material/Edit';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { green } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import WordsList from './contentLesson/wordsList.jsx'
-import Cards from './contentLesson/Cards/card';
 import { CenterFocusStrong } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ActionAreaCard from './contentLesson/Test/test'
-
-
+import GrammerRules from '../grammer/Rules/rule'
 
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   const [disable, setDisable] = useState(false);
-
+  
   return (
     <Typography
       component="div"
@@ -72,7 +68,7 @@ const fabGreenStyle = {
   },
 };
 
-export default function Vocabulary() {
+export default function Grammer() {
  
   let { lessonId } = useParams();
   console.log(lessonId, "lessonId");
@@ -81,14 +77,14 @@ export default function Vocabulary() {
   const [index, setIndex] = useState(0);
   const [value, setValue] = React.useState(0);
 
-  const nextCard=()=>{
+//   const nextCard=()=>{
     
-    setIndex(index+1);
-  }
-  const lastCard=()=>{
+//     setIndex(index+1);
+//   }
+//   const lastCard=()=>{
     
-      setIndex(index-1);
-  }
+//       setIndex(index-1);
+//   }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -144,8 +140,8 @@ export default function Vocabulary() {
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab style={{ height: 75 }} label="Words List" {...a11yProps(0)} />
-          <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} />
+          <Tab style={{ height: 75 }} label="Rules" {...a11yProps(0)} />
+          {/* <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} /> */}
           <Tab style={{ height: 75 }} label="Test" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -155,19 +151,11 @@ export default function Vocabulary() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <WordsList lessonId={lessonId}></WordsList>
+         <GrammerRules lessonId={lessonId}></GrammerRules>
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction} sx={{ justifyContent: 'center' }}>
-      
-          <div style={{display:'flex',flexDirection:'row',height:300,justifyContent:'center'}}><Cards lessonId={lessonId} index={index}></Cards></div>
-          <Stack direction="row" spacing={2}>
-  
-          <div style={{position:"absolute",transform:"translateX(2000%)"}}> <ArrowForwardIosIcon  onClick={()=>nextCard()} variant="contained" ></ArrowForwardIosIcon></div>
-           <div style={{position:"absolute",transform:"translateX(20%)", transform:"translateY(-20%)"}}> <ArrowBackIosNewIcon  onClick={()=>lastCard()} variant="contained" ></ArrowBackIosNewIcon></div>        
-          </Stack>
-        </TabPanel>
+    
         <TabPanel value={value} index={2} dir={theme.direction}>
-          {/* <ActionAreaCard></ActionAreaCard> */}
+
         </TabPanel>
       </SwipeableViews>
       {fabs.map((fab, index) => (

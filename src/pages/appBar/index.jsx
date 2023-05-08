@@ -13,10 +13,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import SchoolIcon from '@mui/icons-material/School';
 import MenuListComposition from './MenuListComposition';
 
-const pages = ['Home', 'help','personal-area'];
-const settings = ['Login','Profile', 'Account','Level' ];
+const pages = ['Home', 'AboutUs','personal-area'];
+const settings = ['Login','Profile','Level' ];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -47,10 +48,11 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{ background: '#ABABAB', height:70}} >
+    <AppBar position="static" style={{ background: 'white', height:70}} >
       <Container  style={{marginTop:-20 }}  >
         <Toolbar >
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <SchoolIcon sx={{ display: { xs: 'none', md: 'flex', color:'#79b7c0', }, mr: 1 }}/>
+         
           <Typography
             variant="h6"
             noWrap
@@ -58,11 +60,12 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: '"Handlee", cursive',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color:'#79b7c0',
               textDecoration: 'none',
+              fontSize:40
             }}
           >
             ENGLISH
@@ -75,7 +78,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color='pink'
             >
               <MenuIcon />
             </IconButton>
@@ -99,14 +102,15 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 
-                <MenuItem key={page} onClick={(e)=>handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem  key={page} onClick={(e)=>handleCloseNavMenu(page)}>
+                  <Typography style={{gap:100}} textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
               <MenuListComposition></MenuListComposition>
             </Menu>
             
           </Box>
+          <SchoolIcon></SchoolIcon>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
@@ -116,11 +120,13 @@ function ResponsiveAppBar() {
             sx={{
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: '"Handlee", cursive',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#00394f',
               textDecoration: 'none',
+              fontFamily:'"Handlee", cursive',
+              
             }}
           >
             English
@@ -130,12 +136,12 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={(e)=>handleCloseNavMenu(page)}
-                sx={{  color: 'white', display: 'block' }}
+                sx={{ fontFamily:'"Handlee", cursive', color: '#00394f', display: 'block' }}
               >
                 {page}
               </Button>
             ))}              
-             <MenuListComposition  sx={{  color: 'white', display: 'block' }}></MenuListComposition>
+             <MenuListComposition  sx={{  color: '#00394f', display: 'block' }}></MenuListComposition>
 
           </Box>
 

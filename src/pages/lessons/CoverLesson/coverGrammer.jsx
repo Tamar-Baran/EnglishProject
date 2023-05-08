@@ -1,4 +1,6 @@
 import React from "react";
+import Grammer from "../Single/grammer/index";
+import Vocabulary from "../Single/grammer/index";
 export default function CoverGrammer({}) {
 
     return (
@@ -10,6 +12,6 @@ export default function CoverGrammer({}) {
         alignContent: 'center', display: 'flex',
         backgroundColor: "#27511132",
         justifyContent: 'center'
-      }}>Cover Grammer</div>
+      }}><Grammer></Grammer></div>
       );
 }

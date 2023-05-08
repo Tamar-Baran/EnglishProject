@@ -59,7 +59,7 @@ export default function MenuListComposition() {
 
         >
         
-          <Button  style={{ color: 'white',margin:16 }} ><Typography textAlign="center" >lessons</Typography></Button>
+          <Button  style={{ margin:16 }} ><Typography style={{fontSize:'14px',fontFamily: '"Handlee", cursive',color: '#00394f'}} textAlign="center" >lessons</Typography></Button>
      </Button>
         <Popper
           open={open}
@@ -84,11 +84,11 @@ export default function MenuListComposition() {
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}>
-                  <MenuItem onClick={(e)=>{handleClose(e,"vocabulary")}}>Vocabulary</MenuItem>
-                  <MenuItem onClick={(e)=>handleClose(e,"spelling")}>Spelling</MenuItem>
-                  <MenuItem onClick={(e)=>handleClose(e,"grammer")}>Grammer</MenuItem>
-                  <MenuItem onClick={(e)=>handleClose(e,"reading")}> Reading</MenuItem>
-                  <MenuItem onClick={(e)=>handleClose(e,"pronounce")}>Pronounce</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>{handleClose(e,"vocabulary")}}>Vocabulary</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"spelling")}>Spelling</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"grammer")}>Grammer</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"reading")}> Reading</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"pronounce")}>Pronounce</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

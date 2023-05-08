@@ -76,8 +76,9 @@ localGrade.push(index.grade)
 console.log(localDate, "localDate")
 console.log(localGrade, "localGrade")
 
-tmp[0]=localGrade[0]
+tmp[0]=localGrade[0];
 var i;
+averageGrade[0]=localGrade[0];
 let count=2;
 for(i=1;i<localGrade.length; i++)
 {
