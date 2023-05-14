@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import img from '../../../images/CLIPB001.gif'
 import "../saved.css";
+import WordsList from '../WordList/listOfWords'
 export default function SavedWordList() {
   return (
     <Card sx={{ maxWidth: 300,minWidth:200,minHeight:200, maxHeight:300, backgroundColor:'#bbdefb' }}>

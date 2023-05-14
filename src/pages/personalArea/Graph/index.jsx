@@ -5,37 +5,6 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
-// const data = [
-//   {
-//     name: 'Page A',
-//     uv: 4000,   
-//   },
-//   {
-//     name: 'Page B',
-//     uv: 3000,  
-//   },
-//   {
-//     name: 'Page C',
-//     uv: 2000,
-//   },
-//   {
-//     name: 'Page D',
-//     uv: 2780,
-//   },
-//   {
-//     name: 'Page E',
-//     uv: 1890,
-//   },
-//   {
-//     name: 'Page F',
-//     uv: 2390,
-//   },
-//   {
-//     name: 'Page G',
-//     uv: 3490,},
-// ];
-
-
 const getPath = (x, y, width, height) => {
   return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
   ${x + width / 2}, ${y}
@@ -76,9 +45,9 @@ localGrade.push(index.grade)
 console.log(localDate, "localDate")
 console.log(localGrade, "localGrade")
 
-tmp[0]=localGrade[0];
+averageGrade[0]=localGrade[0]
+tmp[0]=localGrade[0]
 var i;
-averageGrade[0]=localGrade[0];
 let count=2;
 for(i=1;i<localGrade.length; i++)
 {
@@ -90,7 +59,8 @@ for(i=1;i<localGrade.length; i++)
   count=count+1;
 
 }
-setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[index]}})) 
+setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[index]}}))
+
 })
 
     }
@@ -109,14 +79,14 @@ setNewData(averageGrade.map((grade,index)=> {return{'uv':grade,'name':localDate[
         bottom: 5,
       }}
     >
-      <CartesianGrid strokeDasharray="3 3" />
+      <CartesianGrid strokeDasharray="2 2" />
       <XAxis style={{fontSize:'10'}} dataKey="name" />
       <YAxis />
       <Bar dataKey="uv" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {console.log(newData)}
         {newData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={colors[index % 20]} />
-        ))}
+          <Cell key={`cell-${(index)}`} fill={colors[(index)]} />
+        )) }
       </Bar>
     </BarChart>
   );

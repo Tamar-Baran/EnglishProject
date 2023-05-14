@@ -150,7 +150,7 @@ export default function WordsList({ lessonId }) {
                         else
                         deleteWord(wordsEng[index][0], wordsHeb[index][0])
                     
-                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />}  checked={`${wordsEng[index][1]}`}/>
+                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
                       <div>{wordsEng[index][0]} - {wordsHeb[index][0]}</div>
                     </div>
 

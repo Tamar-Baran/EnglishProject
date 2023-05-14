@@ -13,17 +13,19 @@ import CoverPronounce from './pages/lessons/CoverLesson/coverPronounce';
 import {AuthContextProvider} from './context/AuthContext';
 import SavedWordList from './pages/personalArea/WordList';
 import MyTests from './pages/personalArea/Test'
-import PersonalArea from "./pages/personalArea/index";
+import PersonalArea from './pages/personalArea/index'
 import AboutUs from './pages/aboutUs/index'
+import Footer from './pages/appBar/footer'
+
 function App() {
   // https://themewagon.com/themes/free-responsive-educational-website-template-kidkinder/
   // file:///C:/Users/214387938/AppData/Local/Temp/Temp1_kidkinder-1.0.0.zip/kidkinder-1.0.0/about.html
   return (
     <div   >
       <Router>
-    <AuthContextProvider>
+        <AuthContextProvider>
         <ResponsiveAppBar />
-
+        
         <Routes>
           <Route path='/vocabulary' element={<List type="vocabulary" />} />
           <Route path='/grammer' element={<List type="grammer" />} />
@@ -44,7 +46,7 @@ function App() {
           <Route path='/personal-area' element={<PersonalArea></PersonalArea>} />
 
         </Routes>        
-       
+        <Footer></Footer>
         </AuthContextProvider>
       </Router>
 

@@ -22,7 +22,7 @@ import Stack from '@mui/material/Stack';
 import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ActionAreaCard from './Test/test'
+import SwipeableTextMobileStepper from './Test/index'
 
 
 
@@ -166,8 +166,10 @@ export default function Vocabulary() {
            <div style={{position:"absolute",transform:"translateX(20%)", transform:"translateY(-20%)"}}> <ArrowBackIosNewIcon  onClick={()=>lastCard()} variant="contained" ></ArrowBackIosNewIcon></div>        
           </Stack>
         </TabPanel>
+        
         <TabPanel value={value} index={2} dir={theme.direction}>
-          {/* <ActionAreaCard></ActionAreaCard> */}
+        <SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper>
+          
         </TabPanel>
       </SwipeableViews>
       {fabs.map((fab, index) => (
