@@ -4,6 +4,7 @@ export default function AboutUs() {
 
 
     return(<>
+    
 <div className="container-fluid bg-primary mb-5" >  
         <div className="d-flex flex-column align-items-center justify-content-center" style={{marginTop:'0px', minHeight: "400px" ,backgroundColor:'#79b7c0'}}>
         <h3 className="display-3 font-weight-bold text-white" style={{marginTop:'0px',fontFamily: '"Handlee", cursive'}}>About Us</h3>

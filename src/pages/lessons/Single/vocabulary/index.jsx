@@ -125,6 +125,9 @@ export default function Vocabulary() {
   ];
 
   return (
+<>
+
+
     <Box
       sx={{
         bgcolor: 'background.paper',
@@ -187,6 +190,6 @@ export default function Vocabulary() {
           </Fab>
         </Zoom>
       ))}
-    </Box>
+    </Box></>
   );
 }

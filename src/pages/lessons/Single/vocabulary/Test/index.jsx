@@ -59,8 +59,8 @@ const images = [
 function SwipeableTextMobileStepper({lessonId}) {
   const [questions, setQuestions] = useState({});
   const theme = useTheme();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = images.length;
+  const [activeStep, setActiveStep] = React.useState(2);
+  const [maxSteps,setMaxSteps] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -82,17 +82,57 @@ function SwipeableTextMobileStepper({lessonId}) {
         }
       }
       const { data } = await axios.get(`http://localhost:3600/api/question/lessonId/${lessonId}`, config)
-      console.log(data)
 
-  console.log(data[0].question_Id.questionText)
-  setQuestions(data[0].question_Id.questionText)
+      const arr=data.reduce((questionsObj,currentAnswer)=>
+      {   
+        const { questionId }=currentAnswer
+
+        return {...questionsObj,
+          [questionId]:[...(questionsObj[questionId]||[]),currentAnswer]
+        }
+         
+      },[])
+      console.log("1234",arr);
+      setQuestions(arr)
+
+       
+
+      // {Object.entries(questions).map(([_, answers])=>
+      //   <>
+      //   {answers[0].question_Id?.questionText}
+        
+      //   {answers.map(({answerText})=>(<div>{answerText}</div>) )}
+      //   </>
+      //   )}
 
     }
-    fetchData();
+     fetchData();
+
   }, []);
+
+
+  
+
+   
+
   return (
     <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
-      <Paper
+        {/* {console.log(Object.entries(questions)[activeStep][1])}  */}
+      {Object.entries(questions).map(([_, answers])=>
+      <>
+      {answers[0].question_Id?.questionText}
+      
+      {answers.map(({answerText})=>(<div>{answerText}</div>) )}
+      </>
+      )}
+
+
+      {/* {Object.entries(questions)[2]} */}
+  
+      
+     
+{/* {console.log(Object.entries(questions)[activeStep][1])}        */}
+      {/* <Paper
         square
         elevation={0}
         sx={{
@@ -103,7 +143,8 @@ function SwipeableTextMobileStepper({lessonId}) {
           bgcolor: 'background.default',
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
+
+        <Typography></Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -112,11 +153,10 @@ function SwipeableTextMobileStepper({lessonId}) {
         enableMouseEvents
       >
       
-        {images.map((step, index) => (
-          <div key={step.label}>
+        {Object.entries(questions).map((question, index) => (
+          <div key={question.questionId}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
-                component="img"
                 sx={{
                   height: 255,
                   display: 'block',
@@ -124,11 +164,11 @@ function SwipeableTextMobileStepper({lessonId}) {
                   overflow: 'hidden',
                   width: '100%',
                 }}
-                src={step.imgPath}
-                alt={step.label}
+              src="dsdasfdf"
+              alt={question[0].question_Id?.questionText}
               />
             ) : null}
-          </div>
+         {question.questionId} </div>
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
@@ -159,9 +199,12 @@ function SwipeableTextMobileStepper({lessonId}) {
             Back
           </Button>
         }
-      />
+      /> */}
     </Box>
   );
 }
 
 export default SwipeableTextMobileStepper;
+
+
+
