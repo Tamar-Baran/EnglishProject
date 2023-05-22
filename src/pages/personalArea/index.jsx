@@ -5,13 +5,16 @@ import MyTests from './Test/index'
 import MyGrades from './Grades/index'
 import MyLevel from './Level/index'
 import AverageGraph from "./Graph/index"
+import { color } from "@mui/system";
 function PersonalArea(){
 
 return(
-     <><h1 className="title" style={{
+     <><h2 className="title" style={{
       marginTop: '10%',
-     marginLeft: '32%',
-     marginTop: '10%',}}>Hi, here you can watch your achievements </h1>
+     marginLeft: '27%',
+     marginTop: '10%',
+    fontFamily:'lucida grande, tahoma, verdana, arial, sans-serif',
+     color:"light-gray"}}>Hi, here you can watch your achievements </h2>
    <hr style={{
         marginTop: '2%',
         marginLeft: '10%',
@@ -24,11 +27,19 @@ return(
         gap: 70,
         flexWrap:'wrap',
         justifyContent: 'center'
-      }}> <SavedWordList ></SavedWordList>
+      }}> <SavedWordList></SavedWordList>
       <MyTests></MyTests>
       <MyGrades></MyGrades>
-      <MyLevel></MyLevel>  </div>
-      <AverageGraph></AverageGraph>
+      <MyLevel></MyLevel> </div>
+      <div style={{
+        marginTop: '2%',
+        marginLeft: '10%',
+        marginRight: '10%',
+        alignContent: 'center',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+      <AverageGraph></AverageGraph> </div>
     
    
     

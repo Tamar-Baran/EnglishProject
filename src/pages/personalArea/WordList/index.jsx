@@ -5,20 +5,26 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import img from '../../../images/CLIPB001.gif'
+import { useEffect, useState } from "react";
 import "../saved.css";
-import WordsList from '../WordList/listOfWords'
+import PersonalWordsList from './PersonalWordsList'
+import { Link, useNavigate } from "react-router-dom";
+
 export default function SavedWordList() {
+  const [renderChild, setRenderChild] = useState(false);
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    console.log("navigate");
+    navigate(`savedWordsList`);
+  };
+  
   return (
-    <Card sx={{ maxWidth: 300,minWidth:200,minHeight:200, maxHeight:300, backgroundColor:'#bbdefb' }}>
-      <CardActionArea>
-        {/* <CardMedia
-          component="img"
-          height="200"
-          image={img}
-          alt="word List"
-        /> */}
-        <CardContent  sx={{ minHeight:200,justifyContent:'center',display:'flex',alignItems:'center'}}>
-              <Typography gutterBottom variant="h5" component="div">
+ 
+   <Card sx={{ maxWidth: 300,minWidth:200,minHeight:200, maxHeight:300, backgroundColor:'#bbdefb' }} onClick={()=>handleClick()}>
+      <CardActionArea onClick={()=>handleClick()}>
+        <CardContent  sx={{ minHeight:200,justifyContent:'center',display:'flex',alignItems:'center'}} onClick={()=>handleClick()}>
+              <Typography gutterBottom variant="h5" component="div" >
                 My Words List
               </Typography>
           
@@ -28,5 +34,6 @@ export default function SavedWordList() {
         </div>
       </CardActionArea>
     </Card>
+
   );
 }

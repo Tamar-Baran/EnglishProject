@@ -60,10 +60,20 @@ const List = ({ type }) => {
   }, [lessonsList]);
 
   return (
-
-    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', columnGap: 9, rowGap: 9, minHeight: '550px' }}>
-      <Stack direction="row" spacing={2}>
-        <Grid container >
+<>
+<div className="container-fluid bg-primary mb-5" >  
+        <div className="d-flex flex-column align-items-center justify-content-center" style={{marginTop:'0px', minHeight: "400px" ,backgroundColor:'#79b7c0'}}>
+        <h3 className="display-3 font-weight-bold text-white" style={{marginTop:'0px',fontFamily: '"Handlee", cursive'}}>{type}</h3>
+        <div className="d-inline-flex text-white">
+          <p className="m-0"><a className="text-white" style={{fontFamily:'"Handlee", cursive'}}>Home</a></p>
+          <p className="m-0 px-2">/</p>
+          <p className="m-0" style={{fontFamily:'"Handlee", cursive'}}>{type}</p>
+        </div>
+      </div>
+</div>
+    <div style={{ display: 'flex',gap:'10', flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', minHeight: '550px' }}>
+      <Stack direction="row" spacing={2} style={{ display: 'flex',gap:'10'}}>
+        <Grid container   >
           {lessonsList?.length && (
             lessonsList.map((lesson, index) => {
               return (
@@ -74,7 +84,7 @@ const List = ({ type }) => {
         </Grid>
       </Stack>
     </div>
-
+</>
   )
 }
 

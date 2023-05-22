@@ -125,6 +125,9 @@ export default function Vocabulary() {
   ];
 
   return (
+<>
+
+
     <Box
       sx={{
         bgcolor: 'background.paper',
@@ -172,7 +175,7 @@ export default function Vocabulary() {
           
         </TabPanel>
       </SwipeableViews>
-      {fabs.map((fab, index) => (
+      {/* {fabs.map((fab, index) => (
         <Zoom
           key={fab.color}
           in={value === index}
@@ -186,7 +189,7 @@ export default function Vocabulary() {
             {fab.icon}
           </Fab>
         </Zoom>
-      ))}
-    </Box>
+      ))} */}
+    </Box></>
   );
 }
