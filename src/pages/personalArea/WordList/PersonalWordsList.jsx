@@ -97,6 +97,7 @@ export default function PersonalWordsList() {
         console.log(res)
         setWordsHeb(wordsHeb.filter((w) => w !== wordHebrew));
         setWordsEng(wordsEng.filter((w) => w !== wordEnglish));
+
       }
 return(<>
  <div >
@@ -106,7 +107,7 @@ return(<>
           <Box sx={{ width: '65%', color: '#fcedee', margin: '10%' }} >
             <Stack spacing={2}>
               {
-                 wordsEng?wordsEng.map((word, index) => {
+                 wordsEng.length?wordsEng.map((word, index) => {
                   return <Item>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <IconButton onClick={()=>deleteWord(wordsEng[index],wordsHeb[index])} ><DeleteIcon /></IconButton>
@@ -114,7 +115,7 @@ return(<>
                     </div>
 
                   </Item>
-                }):<h1>no word</h1>                
+                }):<h1>nothing in your words list</h1>                
 
               }
              

@@ -12,6 +12,10 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { useEffect, useState } from "react";
 import CircularProgress from '@mui/material/CircularProgress';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+
+
 
 import axios from "axios";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
@@ -43,6 +47,7 @@ function SwipeableTextMobileStepper({lessonId}) {
         }
       }
       const { data } = await axios.get(`http://localhost:3600/api/question/lessonId/${lessonId}`, config)
+      console.log(data)
 
       const arr=data.reduce((questionsObj,currentAnswer)=>
       {  
@@ -55,8 +60,6 @@ function SwipeableTextMobileStepper({lessonId}) {
       },[])
       console.log("1234",arr);
       setQuestions(arr)
-
-       
 
       // {Object.entries(questions).map(([_, answers])=>
       //   <>
@@ -72,11 +75,31 @@ function SwipeableTextMobileStepper({lessonId}) {
   }, []);
 
 
- 
-
-   
+function checkAnswer(isCorrect){
+  console.log(isCorrect)
 
   return (
+    {isCorrect} ?
+    <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert variant="outlined" severity="success">
+        This is a success alert — check it out!
+      </Alert>
+    </Stack>: 
+     <Stack sx={{ width: '100%' }} spacing={2}>
+       <Alert variant="outlined" severity="error">
+        This is an error alert — check it out!
+      </Alert>
+   </Stack>
+  );
+
+}
+ 
+
+  return (
+    <div style={{  position: 'relative',
+      display: 'flex',
+      justifyContent: 'center'
+     }}>
     <Box sx={{ maxWidth: 400, flexGrow: 1 }}>
      <Paper
         square
@@ -96,19 +119,23 @@ function SwipeableTextMobileStepper({lessonId}) {
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
         onChangeIndex={handleStepChange}
-        enableMouseEvents
       >
         {Object.values(questions).map((answers, index) => (
-          <div key={index}>
-            {answers.map(({ answerText }) => (
-              <Button key={answerText} onClick={() => console.log(answerText)}>
-                {answerText}
-              </Button>
-            ))}
+          <div   key={index}>
+ 
+            {answers.map(({ answerText, isCorrect }) => (
+                <Stack spacing={2} direction="row" marginTop={'30px'}  >
+                <Button onClick={()=>checkAnswer(isCorrect)} style={{width:'300px', height: '50px'}}variant="outlined">{answerText}</Button>
+              </Stack>
+              // <BasicButtons answerText={answerText}></BasicButtons>
+              /* // <Button key={answerText} onClick={() => console.log(answerText)}>
+              //   {answerText}
+              // </Button> */
+            ))},
           </div>
         ))}
       </AutoPlaySwipeableViews>
-    </Box>
+    </Box></div>
   );
 }
 
