@@ -15,7 +15,9 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import IconButton from '@mui/material/IconButton';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function IconCheckboxes() {
@@ -59,30 +61,31 @@ export default function WordsList({ lessonId }) {
         }
       }
       const { data } = await axios.get(`http://localhost:3600/api/lesson/lessonContent/${lessonId}`, config)
-      const res = await axios.get("http://localhost:3600/api/user/wordsList",config);
+      const res = await axios.get("http://localhost:3600/api/user/wordsList", config);
       console.log(res)
 
       var values = [];
       var keys = [];
-      var str=JSON.stringify(res.data);
+      var str = JSON.stringify(res.data);
       Object.values(data).forEach(function (d) {
 
-        Object.values(d).forEach((val) => { 
+        Object.values(d).forEach((val) => {
           if (str.includes(val))
-          values.push([val,'true'])
+            values.push([val, 'true'])
           else
-          values.push([val,'false'])})
-        Object.keys(d).forEach((val) => { 
-          if (str.includes(val))  
-          keys.push([val,'true']) 
+            values.push([val, 'false'])
+        })
+        Object.keys(d).forEach((val) => {
+          if (str.includes(val))
+            keys.push([val, 'true'])
           else
-          keys.push([val,'false']) 
+            keys.push([val, 'false'])
 
         })
       })
 
-     console.log(keys)
-     console.log(values)
+      console.log(keys)
+      console.log(values)
 
       setWordsHeb(values)
       setWordsEng(keys)
@@ -92,34 +95,45 @@ export default function WordsList({ lessonId }) {
     }
     fetchData();
   }, []);
- 
-  const addWord = async (wordEnglish, wordHebrew) => {
-       
-      const config = {
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
-        }
-      } 
-      console.log(config)
-      const res = await axios.post("http://localhost:3600/api/user/wordsList",  {wordEnglish, wordHebrew},config);
-      console.log(res)
-     
-  }
-  const deleteWord = async (wordEnglish, wordHebrew) => {
-       
+
+  const addWord = async (index,wordEnglish, wordHebrew) => {
+
     const config = {
       headers: {
         'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
       }
-    } 
+    }
+    console.log(config)
+    const res = await axios.post("http://localhost:3600/api/user/wordsList", { wordEnglish, wordHebrew }, config);
+    console.log(res)
+    console.log("before",wordsEng)
+      var x=[...wordsEng];
+      x[index][1]='true';
+      setWordsEng(x);
+console.log("after",wordsEng)
+
+  }
+  const deleteWord = async (index,wordEnglish, wordHebrew) => {
+
+    const config = {
+      headers: {
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem("token"))
+      }
+    }
     console.log(config)
     const res = await axios.delete("http://localhost:3600/api/user/wordsList", {
       data: { wordEnglish, wordHebrew },
       ...config
     });
     console.log(res)
-   
-}
+    console.log(res)
+    console.log("before",wordsEng)
+      var x=[...wordsEng];
+      x[index][1]='false';
+      setWordsEng(x);
+console.log("after",wordsEng)
+
+  }
 
   return (
     <List
@@ -135,7 +149,6 @@ export default function WordsList({ lessonId }) {
       }}
       subheader={<li />}
     >
-
       <li >
         <ul>
           <Box sx={{ width: '85%', color: '#fcedee', margin: '5%' }}>
@@ -144,20 +157,24 @@ export default function WordsList({ lessonId }) {
                 { wordsEng } && wordsEng.map((word, index) => {
                   return <Item>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <Checkbox  onChange={(e) => {
-                        if (e.target.checked == true)
-                        addWord(wordsEng[index][0], wordsHeb[index][0]);
-                        else
-                        deleteWord(wordsEng[index][0], wordsHeb[index][0])
-                    
-                        }}   {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
+              
+                        {
+                          wordsEng[index][1]=='true' ?
+                            <IconButton onClick={()=>{deleteWord(index,wordsEng[index][0], wordsHeb[index][0])}}>
+                              <PlaylistAddCheckIcon />
+                            </IconButton> : 
+                            <IconButton onClick={()=>{addWord(index,wordsEng[index][0], wordsHeb[index][0])}}>
+                              <PlaylistAddIcon />
+                            </IconButton>
+
+                        }
                       <div>{wordsEng[index][0]} - {wordsHeb[index][0]}</div>
                     </div>
 
                   </Item>
                 })
               }
-             
+
             </Stack>
           </Box>
         </ul>

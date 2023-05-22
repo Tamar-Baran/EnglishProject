@@ -13,7 +13,7 @@ return(
       marginTop: '10%',
      marginLeft: '27%',
      marginTop: '10%',
-     fontFamily:'"Handlee", cursive',
+    fontFamily:'lucida grande, tahoma, verdana, arial, sans-serif',
      color:"light-gray"}}>Hi, here you can watch your achievements </h2>
    <hr style={{
         marginTop: '2%',
@@ -27,11 +27,19 @@ return(
         gap: 70,
         flexWrap:'wrap',
         justifyContent: 'center'
-      }}> <SavedWordList ></SavedWordList>
+      }}> <SavedWordList></SavedWordList>
       <MyTests></MyTests>
       <MyGrades></MyGrades>
-      <MyLevel></MyLevel>  </div>
-      <AverageGraph></AverageGraph>
+      <MyLevel></MyLevel> </div>
+      <div style={{
+        marginTop: '2%',
+        marginLeft: '10%',
+        marginRight: '10%',
+        alignContent: 'center',
+        display: 'flex',
+        justifyContent: 'center'
+      }}>
+      <AverageGraph></AverageGraph> </div>
     
    
     

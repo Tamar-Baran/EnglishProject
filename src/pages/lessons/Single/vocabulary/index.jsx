@@ -170,12 +170,13 @@ export default function Vocabulary() {
           </Stack>
         </TabPanel>
         
-        <TabPanel value={value} index={2} dir={theme.direction}>
-        <SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper>
+        <TabPanel value={value} index={2} dir={theme.direction} sx={{ justifyContent: 'center', position:"absolute",transform:"translateX(2000%)",display:'flex'}}>
+        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div>
+        
           
         </TabPanel>
       </SwipeableViews>
-      {fabs.map((fab, index) => (
+      {/* {fabs.map((fab, index) => (
         <Zoom
           key={fab.color}
           in={value === index}
@@ -189,7 +190,7 @@ export default function Vocabulary() {
             {fab.icon}
           </Fab>
         </Zoom>
-      ))}
+      ))} */}
     </Box></>
   );
 }
