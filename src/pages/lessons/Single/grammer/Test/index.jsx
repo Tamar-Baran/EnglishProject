@@ -23,7 +23,7 @@ import axios from "axios";
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 
-function SwipeableTextMobileStepper({lessonId}) 
+function GrammerTest({lessonId}) 
 {
 
   const [questions, setQuestions] = useState({});
@@ -129,4 +129,4 @@ function SwipeableTextMobileStepper({lessonId})
   );
 }         
 
-export default SwipeableTextMobileStepper;
+export default GrammerTest;

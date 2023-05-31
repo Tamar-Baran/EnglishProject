@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GrammerRules from '../grammer/Rules/rule'
-import SwipeableTextMobileStepper from '../grammer/Test/index'
+import GrammerTest from '../grammer/Test/index'
 
 
 function TabPanel(props) {
@@ -142,8 +142,7 @@ export default function Grammer() {
           aria-label="action tabs example"
         >
           <Tab style={{ height: 75 }} label="Rules" {...a11yProps(0)} />
-          {/* <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} /> */}
-          <Tab style={{ height: 75 }} label="Test" {...a11yProps(2)} />
+          <Tab style={{ height: 75 }} label="Test" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -155,8 +154,8 @@ export default function Grammer() {
          <GrammerRules lessonId={lessonId}></GrammerRules>
         </TabPanel>
     
-        <TabPanel value={value} index={2} dir={theme.direction}>
-        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div> 
+        <TabPanel value={value} index={1} dir={theme.direction}>
+        <GrammerTest lessonId={lessonId}></GrammerTest>
         </TabPanel>
         
       </SwipeableViews>

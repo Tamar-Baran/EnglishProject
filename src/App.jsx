@@ -46,8 +46,8 @@ function App() {
           <Route path='/reading/lesson/:lessonId' element={<CoverReading></CoverReading>} />
           <Route path='/pronounce/lesson/:lessonId' element={<CoverPronounce></CoverPronounce>} />
           <Route path='/personal-area' element={<><PersonalArea/> <Footer/></> } />
-          <Route path='/personal-area/savedWordsList' element={<PersonalWordsList></PersonalWordsList> } />
-          <Route path='/personal-area/my-test' element={<MyTest></MyTest> } />
+          <Route path='/personal-area/savedWordsList' element={<><PersonalWordsList></PersonalWordsList><Footer/></> } />
+          <Route path='/personal-area/my-test' element={<><MyTest></MyTest><Footer/> </>} />
 
         </Routes>        
         </AuthContextProvider>
