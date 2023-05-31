@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import GrammerRules from '../grammer/Rules/rule'
+import SwipeableTextMobileStepper from '../grammer/Test/index'
 
 
 function TabPanel(props) {
@@ -155,8 +156,9 @@ export default function Grammer() {
         </TabPanel>
     
         <TabPanel value={value} index={2} dir={theme.direction}>
-
+        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div> 
         </TabPanel>
+        
       </SwipeableViews>
       {fabs.map((fab, index) => (
         <Zoom
