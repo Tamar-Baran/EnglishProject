@@ -20,6 +20,7 @@ import Favorite from '@mui/icons-material/Favorite';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import IconButton from '@mui/material/IconButton';
+import { Empty } from 'antd';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -115,7 +116,7 @@ return(<>
                     </div>
 
                   </Item>
-                }):<h1>nothing in your words list</h1>                
+                }):<><Empty description={false}></Empty><spam style={{color:'black'}}>no words in your word list</spam></>
 
               }
              
@@ -123,8 +124,6 @@ return(<>
           </Box>
         </ul>
       </li>
-    </div>
-      
-        </>);
+    </div> </>);
 
 }

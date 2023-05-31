@@ -170,11 +170,10 @@ export default function Vocabulary() {
           </Stack>
         </TabPanel>
         
-        <TabPanel value={value} index={2} dir={theme.direction} sx={{ justifyContent: 'center', position:"absolute",transform:"translateX(2000%)",display:'flex'}}>
-        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div>
-        
-          
+        <TabPanel value={value} index={2} dir={theme.direction} >
+        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div> 
         </TabPanel>
+        
       </SwipeableViews>
       {/* {fabs.map((fab, index) => (
         <Zoom

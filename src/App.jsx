@@ -17,6 +17,7 @@ import PersonalArea from './pages/personalArea/index'
 import AboutUs from './pages/aboutUs/index'
 import Footer from './pages/appBar/footer'
 import PersonalProfile from './pages/profile/index'
+import MyTest from './pages/personalArea/Test/MyTest'
 import PersonalWordsList from "./pages/personalArea/WordList/PersonalWordsList";
 function App() {
   // https://themewagon.com/themes/free-responsive-educational-website-template-kidkinder/
@@ -45,11 +46,12 @@ function App() {
           <Route path='/reading/lesson/:lessonId' element={<CoverReading></CoverReading>} />
           <Route path='/pronounce/lesson/:lessonId' element={<CoverPronounce></CoverPronounce>} />
           <Route path='/personal-area' element={<><PersonalArea/> <Footer/></> } />
-          <Route path='/personal-area/savedWordsList' element={<PersonalWordsList></PersonalWordsList> } />
+          <Route path='/personal-area/savedWordsList' element={<><PersonalWordsList></PersonalWordsList><Footer/></> } />
+          <Route path='/personal-area/my-test' element={<><MyTest></MyTest><Footer/> </>} />
+
         </Routes>        
         </AuthContextProvider>
       </Router>
-{/* <PersonalProfile></PersonalProfile> */}
 
     </div>
   );
@@ -57,5 +59,4 @@ function App() {
 
 export default App;
 
-          // <Route path='/lessons' element={<Lessons />} />
-          // <Route path='/lessons/:id' element={<Register />} />
+        

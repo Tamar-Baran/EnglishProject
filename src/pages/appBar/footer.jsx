@@ -10,6 +10,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import EmailIcon from '@mui/icons-material/Email';
 import CallIcon from '@mui/icons-material/Call';
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
+
+
 export default function Footer() {
   return (
     <MDBFooter style={{marginTop:50}} bgColor='light' className='text-center text-lg-start text-muted'>
