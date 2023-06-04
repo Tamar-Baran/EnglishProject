@@ -30,7 +30,7 @@ function App() {
         
         <Routes>
           <Route path='/vocabulary' element={<><List type="vocabulary" /><Footer/></>} />
-          <Route path='/grammer' element={<><List type="grammer" /><Footer/></>} />
+          <Route path='/grammar' element={<><List type="grammar" /><Footer/></>} />
           <Route path='/spelling' element={<><List type="spelling" /><Footer/></>} />
           <Route path='/reading' element={<><List type="reading" /><Footer/></>} />
           <Route path='/pronounce' element={<><List type="pronounce" /><Footer/></>} />
