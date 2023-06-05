@@ -78,14 +78,7 @@ export default function Grammer() {
   const [index, setIndex] = useState(0);
   const [value, setValue] = React.useState(0);
 
-//   const nextCard=()=>{
-    
-//     setIndex(index+1);
-//   }
-//   const lastCard=()=>{
-    
-//       setIndex(index-1);
-//   }
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -159,21 +152,7 @@ export default function Grammer() {
         </TabPanel>
         
       </SwipeableViews>
-      {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
-        >
-          <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))}
+      
     </Box>
   );
 }

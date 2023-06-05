@@ -86,7 +86,7 @@ export default function MenuListComposition() {
                     onKeyDown={handleListKeyDown}>
                   <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>{handleClose(e,"vocabulary")}}>Vocabulary</MenuItem>
                   <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"spelling")}>Spelling</MenuItem>
-                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"grammer")}>Grammer</MenuItem>
+                  <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"grammar")}>Grammar</MenuItem>
                   <MenuItem style={{fontSize:'16px',color: '#00394f'}} onClick={(e)=>handleClose(e,"pronounce")}>Pronounce</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
