@@ -14,22 +14,17 @@ import EditIcon from '@mui/icons-material/Edit';
 import UpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { green } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import WordsList from './wordsList.jsx'
+import WordsList from './wordsList.jsx';
 import Cards from './Cards/card';
-import { CenterFocusStrong } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { useEffect, useState } from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import SwipeableTextMobileStepper from './Test/index'
-
-
-
+import SwipeableTextMobileStepper from './Test/index';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-  const [disable, setDisable] = useState(false);
+  const [disable, setDisable] = React.useState(false);
 
   return (
     <Typography
@@ -73,22 +68,20 @@ const fabGreenStyle = {
 };
 
 export default function Vocabulary() {
- 
   let { lessonId } = useParams();
-  console.log(lessonId, "lessonId");
+  console.log(lessonId, 'lessonId');
 
   const theme = useTheme();
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = React.useState(0);
   const [value, setValue] = React.useState(0);
 
-  const nextCard=()=>{
-    
-    setIndex(index+1);
-  }
-  const lastCard=()=>{
-    
-      setIndex(index-1);
-  }
+  const nextCard = () => {
+    setIndex(index + 1);
+  };
+
+  const lastCard = () => {
+    setIndex(index - 1);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -125,71 +118,74 @@ export default function Vocabulary() {
   ];
 
   return (
-<>
-
-
-    <Box
-      sx={{
-        bgcolor: 'background.paper',
-        width: 900,
-        position: 'relative',
-        minHeight: 600,
-        justifyContent: 'center',
-        margin: 10,
-      }}
-    >
-      <AppBar position="static" color="default" style={{ height: 75 }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="fullWidth"
-          aria-label="action tabs example"
-        >
-          <Tab style={{ height: 75 }} label="Words List" {...a11yProps(0)} />
-          <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} />
-          <Tab style={{ height: 75 }} label="Test" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
+    <>
+      <Box
+        sx={{
+          bgcolor: 'background.paper',
+          width: 900,
+          position: 'relative',
+          minHeight: 600,
+          justifyContent: 'center',
+          margin: 10,
+        }}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <WordsList lessonId={lessonId}></WordsList>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction} sx={{ justifyContent: 'center' }}>
-      
-          <div style={{display:'flex',flexDirection:'row',height:300,justifyContent:'center'}}><Cards lessonId={lessonId} index={index}></Cards></div>
-          <Stack direction="row" spacing={2}>
-  
-          <div style={{position:"absolute",transform:"translateX(2000%)"}}> <ArrowForwardIosIcon  onClick={()=>nextCard()} variant="contained" ></ArrowForwardIosIcon></div>
-           <div style={{position:"absolute",transform:"translateX(20%)", transform:"translateY(-20%)"}}> <ArrowBackIosNewIcon  onClick={()=>lastCard()} variant="contained" ></ArrowBackIosNewIcon></div>        
-          </Stack>
-        </TabPanel>
-        
-        <TabPanel value={value} index={2} dir={theme.direction} >
-        <div style={{flexDirection:'row',height:300,justifyContent:'center'}}><SwipeableTextMobileStepper lessonId={lessonId}></SwipeableTextMobileStepper></div> 
-        </TabPanel>
-        
-      </SwipeableViews>
-      {/* {fabs.map((fab, index) => (
-        <Zoom
-          key={fab.color}
-          in={value === index}
-          timeout={transitionDuration}
-          style={{
-            transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
-          }}
-          unmountOnExit
+        <AppBar position="static" color="default" style={{ height: 75 }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth"
+            aria-label="action tabs example"
+          >
+            <Tab style={{ height: 75 }} label="Words List" {...a11yProps(0)} />
+            <Tab style={{ height: 75 }} label="Cards" {...a11yProps(1)} />
+            <Tab style={{ height: 75 }} label="Test" {...a11yProps(2)} />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
         >
-          <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
-            {fab.icon}
-          </Fab>
-        </Zoom>
-      ))} */}
-    </Box></>
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <WordsList lessonId={lessonId} />
+          </TabPanel>
+          <TabPanel value={value} index={1} dir={theme.direction} sx={{ justifyContent: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', height: 300, justifyContent: 'center' }}>
+              <Cards lessonId={lessonId} index={index} />
+            </div>
+            <Stack direction="row" spacing={2}>
+              <div style={{ position: 'absolute', transform: 'translateX(2000%)' }}>
+                <ArrowForwardIosIcon onClick={nextCard} variant="contained" />
+              </div>
+              <div style={{ position: 'absolute', transform: 'translateX(20%)', transform: 'translateY(-20%)' }}>
+                <ArrowBackIosNewIcon onClick={lastCard} variant="contained" />
+              </div>
+            </Stack>
+          </TabPanel>
+          <TabPanel value={value} index={2} dir={theme.direction}>
+            <div style={{ flexDirection: 'row', height: 300, justifyContent: 'center' }}>
+              <SwipeableTextMobileStepper lessonId={lessonId} />
+            </div>
+          </TabPanel>
+        </SwipeableViews>
+        {/* {fabs.map((fab, index) => (
+          <Zoom
+            key={fab.color}
+            in={value === index}
+            timeout={transitionDuration}
+            style={{
+              transitionDelay: `${value === index ? transitionDuration.exit : 0}ms`,
+            }}
+            unmountOnExit
+          >
+            <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
+              {fab.icon}
+            </Fab>
+          </Zoom>
+        ))} */}
+      </Box>
+    </>
   );
 }

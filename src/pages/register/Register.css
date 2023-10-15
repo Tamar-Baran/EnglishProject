@@ -1,0 +1,55 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .register-card {
+    width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .register-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .register-header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .register-header span {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .register-form h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .register-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-form .MuiTextField-root {
+    margin-bottom: 20px;
+  }
+  
+  .register-form .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .register-form .MuiButton-root {
+    margin-top: 20px;
+  }
+  
